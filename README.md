@@ -4,6 +4,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 
 ## Changes in my fork (cortan122)
 + keyboard input [patch](https://st.suckless.org/patches/fix_keyboard_input/)
++ fix for `ctrl+shift+delete` and `ctrl+shift+backspace`
 
 ## Unique features (using dmenu)
 
