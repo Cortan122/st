@@ -220,8 +220,8 @@ ResourcePref resources[] = {
  */
 static MouseShortcut mshortcuts[] = {
 	/* button               mask            string */
-	{ Button4,              XK_NO_MOD,      "\031" },
-	{ Button5,              XK_NO_MOD,      "\005" },
+	{ Button4,              XK_NO_MOD,      "\x1bOA\x1bOA\x1bOA" },
+	{ Button5,              XK_NO_MOD,      "\x1bOB\x1bOB\x1bOB" },
 };
 
 /* Internal keyboard shortcuts. */
@@ -230,8 +230,10 @@ static MouseShortcut mshortcuts[] = {
 
 MouseKey mkeys[] = {
 	/* button               mask            function        argument */
-	{ Button4,              XK_NO_MOD,      kscrollup,      {.i =  1} },
-	{ Button5,              XK_NO_MOD,      kscrolldown,    {.i =  1} },
+	{ Button4,              XK_NO_MOD,      kscrollup,      {.i =  3} },
+	{ Button5,              XK_NO_MOD,      kscrolldown,    {.i =  3} },
+	{ Button4,              ShiftMask,      kscrollup,      {.i = -1} },
+	{ Button5,              ShiftMask,      kscrolldown,    {.i = -1} },
 	{ Button4,              TERMMOD,        zoom,           {.f =  +1} },
 	{ Button5,              TERMMOD,        zoom,           {.f =  -1} },
 };
