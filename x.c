@@ -1540,9 +1540,13 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
 	}
 
 	if (base.mode & ATTR_REVERSE) {
-		temp = fg;
-		fg = bg;
-		bg = temp;
+		colfg.red = bg->color.red;
+		colfg.green = bg->color.green;
+		colfg.blue = bg->color.blue;
+		colfg.alpha = 0xffff;
+		XftColorAllocValue(xw.dpy, xw.vis, xw.cmap, &colfg, &revfg);
+		bg = fg;
+		fg = &revfg;
 	}
 
 	if (base.mode & ATTR_BLINK && win.mode & MODE_BLINK)

@@ -8,6 +8,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + Ubuntu color scheme and Unifont as fallback
 + scroll 3 lines at a time (and also in `nano`)
 + this [patch](https://st.suckless.org/patches/anysize/) doesn't center anything anymore
++ selected text no longer turns invisible when alpha is 0
 
 ## Unique features (using dmenu)
 
