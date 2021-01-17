@@ -7,6 +7,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + fix for `ctrl+shift+delete` and `ctrl+shift+backspace`
 + Ubuntu color scheme and Unifont as fallback
 + scroll 3 lines at a time (and also in `nano`)
++ this [patch](https://st.suckless.org/patches/anysize/) doesn't center anything anymore
 
 ## Unique features (using dmenu)
 
