@@ -2,6 +2,9 @@
 
 The [suckless terminal (st)](https://st.suckless.org/) with some additional features that make it literally the best terminal emulator ever:
 
+## Changes in my fork (cortan122)
++ keyboard input [patch](https://st.suckless.org/patches/fix_keyboard_input/)
+
 ## Unique features (using dmenu)
 
 + **follow urls** by pressing `alt-l`
