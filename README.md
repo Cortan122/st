@@ -12,6 +12,9 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + mouse wheel shortcuts for zoom and alpha
 + everything uses `CLIPBOARD` insted of `PRIMARY`
 + both right click and middle click to paste
++ removed some unnecessary redundant shortcuts
+
+note: `st.1` remains unedited
 
 ## Unique features (using dmenu)
 
