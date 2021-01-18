@@ -4,6 +4,7 @@ st is a simple terminal emulator for X which sucks less.
 ## changes in code
 + `^L` keeps scrollback buffer intact
 + selected text no longer turns invisible when alpha is 0
++ faster zoom (костыль)
 
 ## changes in config
 + keyboard input [patch](https://st.suckless.org/patches/fix_keyboard_input/)
