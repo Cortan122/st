@@ -4,7 +4,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 
 ## Changes in my fork (cortan122)
 + keyboard input [patch](https://st.suckless.org/patches/fix_keyboard_input/)
-+ fix for `ctrl+shift+delete` and `ctrl+shift+backspace`
++ fix for `ctrl+shift+delete`, `shift+space` and `ctrl+shift+backspace`
 + Ubuntu color scheme and Unifont as fallback
 + scroll 3 lines at a time (and also in `nano`)
 + this [patch](https://st.suckless.org/patches/anysize/) doesn't center anything anymore
