@@ -9,6 +9,9 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + scroll 3 lines at a time (and also in `nano`)
 + this [patch](https://st.suckless.org/patches/anysize/) doesn't center anything anymore
 + selected text no longer turns invisible when alpha is 0
++ mouse wheel shortcuts for zoom and alpha
++ everything uses `CLIPBOARD` insted of `PRIMARY`
++ both right click and middle click to paste
 
 ## Unique features (using dmenu)
 

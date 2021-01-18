@@ -226,7 +226,7 @@ static MouseShortcut mshortcuts[] = {
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
-#define TERMMOD (Mod1Mask|ShiftMask)
+#define TERMMOD (ControlMask|ShiftMask)
 
 MouseKey mkeys[] = {
 	/* button               mask            function        argument */
@@ -234,8 +234,13 @@ MouseKey mkeys[] = {
 	{ Button5,              XK_NO_MOD,      kscrolldown,    {.i =  3} },
 	{ Button4,              ShiftMask,      kscrollup,      {.i = -1} },
 	{ Button5,              ShiftMask,      kscrolldown,    {.i = -1} },
-	{ Button4,              TERMMOD,        zoom,           {.f =  +1} },
-	{ Button5,              TERMMOD,        zoom,           {.f =  -1} },
+	{ Button4,              ControlMask,    zoom,           {.f = +1} },
+	{ Button5,              ControlMask,    zoom,           {.f = -1} },
+	{ Button4,              TERMMOD,        changealpha,    {.f = .1} },
+	{ Button5,              TERMMOD,        changealpha,    {.f =-.1} },
+	{ Button2,              ControlMask,    zoomreset,      {.f =  0} },
+	{ Button2,              XK_NO_MOD,      clippaste,      {.i =  0} },
+	{ Button3,              XK_NO_MOD,      clippaste,      {.i =  0} },
 };
 
 static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler -o", "externalpipe", NULL };
@@ -254,7 +259,6 @@ static Shortcut shortcuts[] = {
 	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      clippaste,      {.i =  0} },
 	{ MODKEY,               XK_v,           clippaste,      {.i =  0} },
-	{ XK_ANY_MOD,		Button2,	selpaste,	{.i =  0} },
 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_Control_L,   iso14755,       {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
