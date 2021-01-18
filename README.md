@@ -13,6 +13,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + everything uses `CLIPBOARD` insted of `PRIMARY`
 + both right click and middle click to paste
 + removed some unnecessary redundant shortcuts
++ faster zoom (костыль)
 
 note: `st.1` remains unedited
 
