@@ -14,6 +14,8 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + both right click and middle click to paste
 + removed some unnecessary redundant shortcuts
 + faster zoom (костыль)
++ you can no longer scroll past the end of the scrollback buffer into the void (костыль)
++ alt screen no longer pollutes the scrollback buffer
 
 note: `st.1` remains unedited
 

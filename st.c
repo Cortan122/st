@@ -240,6 +240,8 @@ static STREscape strescseq;
 static int iofd = 1;
 static int cmdfd;
 static pid_t pid;
+static int originalScroll = 0;
+static int numEmptyLinesInHistory = 0;
 
 static uchar utfbyte[UTF_SIZ + 1] = {0x80,    0, 0xC0, 0xE0, 0xF0};
 static uchar utfmask[UTF_SIZ + 1] = {0xC0, 0x80, 0xE0, 0xF0, 0xF8};
@@ -1105,6 +1107,11 @@ kscrollup(const Arg* a)
 	if (n < 0)
 		n = term.row + n;
 
+	if(term.scr+n >= originalScroll)
+		n = originalScroll-term.scr;
+	if(term.scr+n >= HISTSIZE-numEmptyLinesInHistory+1)
+		n = HISTSIZE-numEmptyLinesInHistory - term.scr;
+
 	if (term.scr <= HISTSIZE-n) {
 		term.scr += n;
 		selscroll(0, n);
@@ -1120,11 +1127,13 @@ tscrolldown(int orig, int n, int copyhist)
 
 	LIMIT(n, 0, term.bot-orig+1);
 
-	if (copyhist) {
+	if (copyhist && !tisaltscr()) {
 		term.histi = (term.histi - 1 + HISTSIZE) % HISTSIZE;
 		temp = term.hist[term.histi];
 		term.hist[term.histi] = term.line[term.bot];
 		term.line[term.bot] = temp;
+		originalScroll -= n;
+		numEmptyLinesInHistory++;
 	}
 
 	tsetdirt(orig, term.bot-n);
@@ -1147,11 +1156,14 @@ tscrollup(int orig, int n, int copyhist)
 
 	LIMIT(n, 0, term.bot-orig+1);
 
-	if (copyhist) {
+	if (copyhist && !tisaltscr()) {
 		term.histi = (term.histi + 1) % HISTSIZE;
 		temp = term.hist[term.histi];
 		term.hist[term.histi] = term.line[orig];
 		term.line[orig] = temp;
+		originalScroll += n;
+		numEmptyLinesInHistory--;
+		if(numEmptyLinesInHistory < 0)numEmptyLinesInHistory = 0;
 	}
 
 	if (term.scr > 0 && term.scr < HISTSIZE)
