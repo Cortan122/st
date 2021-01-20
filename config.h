@@ -241,6 +241,8 @@ MouseKey mkeys[] = {
 	{ Button2,              ControlMask,    zoomreset,      {.f =  0} },
 	{ Button2,              XK_NO_MOD,      clippaste,      {.i =  0} },
 	{ Button3,              XK_NO_MOD,      clippaste,      {.i =  0} },
+	{ Button2,              ShiftMask,      clippaste,      {.i =  0} },
+	{ Button3,              ShiftMask,      clippaste,      {.i =  0} },
 };
 
 static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler -o", "externalpipe", NULL };

@@ -17,6 +17,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + you can no longer scroll past the end of the scrollback buffer into the void (костыль)
 + alt screen no longer pollutes the scrollback buffer
 + resizing keeps scrollback history intact
++ `shift+right click` can paste in `MODE_MOUSE`
 
 note: `st.1` remains unedited
 
