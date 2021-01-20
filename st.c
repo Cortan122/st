@@ -1011,6 +1011,7 @@ tsetdirtattr(int attr)
 void
 tfulldirt(void)
 {
+	if(term.row == 0)return;
 	tsetdirt(0, term.row-1);
 }
 
@@ -2664,21 +2665,14 @@ tresize(int col, int row)
 		return;
 	}
 
-	/*
-	 * slide screen to keep cursor where we expect it -
-	 * tscrollup would work here, but we can optimize to
-	 * memmove because we're freeing the earlier lines
-	 */
-	for (i = 0; i <= term.c.y - row; i++) {
-		free(term.line[i]);
-		free(term.alt[i]);
+	// slide screen to keep cursor where we expect it
+	tcursor(CURSOR_SAVE);
+	for(j = 0; j < 2; j++){
+		for(i = 0; i <= term.c.y - row; i++)tscrollup(term.top, 1, 1);
+		tswapscreen();
+		tcursor(CURSOR_LOAD);
 	}
-	/* ensure that both src and dst are not NULL */
-	if (i > 0) {
-		memmove(term.line, term.line + i, row * sizeof(Line));
-		memmove(term.alt, term.alt + i, row * sizeof(Line));
-	}
-	for (i += row; i < term.row; i++) {
+	for (i = row; i < term.row; i++) {
 		free(term.line[i]);
 		free(term.alt[i]);
 	}

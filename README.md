@@ -16,6 +16,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + faster zoom (костыль)
 + you can no longer scroll past the end of the scrollback buffer into the void (костыль)
 + alt screen no longer pollutes the scrollback buffer
++ resizing keeps scrollback history intact
 
 note: `st.1` remains unedited
 
