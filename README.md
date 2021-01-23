@@ -18,6 +18,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + alt screen no longer pollutes the scrollback buffer
 + resizing keeps scrollback history intact
 + `shift+right click` can paste in `MODE_MOUSE`
++ `^L` keeps scrollback buffer intact
 
 note: `st.1` remains unedited
 
