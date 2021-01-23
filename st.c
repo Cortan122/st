@@ -1805,6 +1805,16 @@ csihandle(void)
 			tclearregion(0, term.c.y, term.c.x, term.c.y);
 			break;
 		case 2: /* all */
+			if(!tisaltscr()){
+				int d = term.row;
+				while(tlinelen(d-1) == 0)d--;
+				while(d > 0){
+					tscrollup(term.top, 1, 1);
+					tmoveto(term.c.x, term.c.y);
+					d--;
+				}
+				break;
+			}
 			tclearregion(0, 0, term.col-1, term.row-1);
 			break;
 		default:
