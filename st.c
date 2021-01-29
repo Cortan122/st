@@ -1090,6 +1090,16 @@ tswapscreen(void)
 }
 
 void
+ktryclipcopy(const Arg* dummy)
+{
+	if (sel.mode == SEL_EMPTY || sel.ob.x == -1 || sel.alt != IS_SET(MODE_ALTSCREEN))
+		ttywrite("\x03", 1, 1);
+	else
+		xclipcopy();
+	selclear();
+}
+
+void
 kscrollup(const Arg *a)
 {
 	int n = a->i;

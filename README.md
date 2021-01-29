@@ -6,6 +6,7 @@ st is a simple terminal emulator for X which sucks less.
 + selected text no longer turns invisible when alpha is 0
 + faster zoom (костыль)
 + simplified [anysize](https://st.suckless.org/patches/anysize/) patch that doesn't center the screen
++ smart copy with `^C`
 
 ## changes in config
 + keyboard input [patch](https://st.suckless.org/patches/fix_keyboard_input/)
