@@ -19,6 +19,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + resizing keeps scrollback history intact
 + `shift+right click` can paste in `MODE_MOUSE`
 + `^L` keeps scrollback buffer intact
++ smart copy with `^C`
 
 note: `st.1` remains unedited
 

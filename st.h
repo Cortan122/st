@@ -98,6 +98,7 @@ void draw(void);
 
 void externalpipe(const Arg *);
 void iso14755(const Arg *);
+void ktryclipcopy(const Arg *);
 void kscrolldown(const Arg *);
 void kscrollup(const Arg *);
 void printscreen(const Arg *);
