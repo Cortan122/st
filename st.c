@@ -1100,13 +1100,22 @@ kscrolldown(const Arg* a)
 	if (n < 0)
 		n = term.row + n;
 
+	int n2 = n;
 	if (n > term.scr)
 		n = term.scr;
 
-	if (term.scr > 0) {
+	if (term.scr > 0 && n) {
 		term.scr -= n;
 		selscroll(0, -n);
 		tfulldirt();
+	}
+
+	// todo: optimize to one call to tscrollup
+	int d = n2 - n;
+	while(d > 0 && term.c.y > 0){
+		tscrollup(term.top, 1, 1);
+		tmoveto(term.c.x, term.c.y-1);
+		d--;
 	}
 }
 
@@ -1123,6 +1132,13 @@ kscrollup(const Arg* a)
 	if(term.scr+n >= HISTSIZE-numEmptyLinesInHistory+1)
 		n = HISTSIZE-numEmptyLinesInHistory - term.scr;
 
+	// todo: optimize to one call to tscrolldown
+	while(n > 0 && term.c.y < term.row-1){
+		tscrolldown(term.top, 1, 1);
+		tmoveto(term.c.x, term.c.y+1);
+		n--;
+	}
+
 	if (term.scr <= HISTSIZE-n) {
 		term.scr += n;
 		selscroll(0, n);
@@ -1138,15 +1154,6 @@ tscrolldown(int orig, int n, int copyhist)
 
 	LIMIT(n, 0, term.bot-orig+1);
 
-	if (copyhist && !tisaltscr()) {
-		term.histi = (term.histi - 1 + HISTSIZE) % HISTSIZE;
-		temp = term.hist[term.histi];
-		term.hist[term.histi] = term.line[term.bot];
-		term.line[term.bot] = temp;
-		originalScroll -= n;
-		numEmptyLinesInHistory++;
-	}
-
 	tsetdirt(orig, term.bot-n);
 	tclearregion(0, term.bot-n+1, term.col-1, term.bot);
 
@@ -1154,6 +1161,15 @@ tscrolldown(int orig, int n, int copyhist)
 		temp = term.line[i];
 		term.line[i] = term.line[i-n];
 		term.line[i-n] = temp;
+	}
+
+	if (copyhist && !tisaltscr()) {
+		temp = term.hist[term.histi];
+		term.hist[term.histi] = term.line[orig];
+		term.line[orig] = temp;
+		term.histi = (term.histi - 1 + HISTSIZE) % HISTSIZE;
+		originalScroll -= n;
+		numEmptyLinesInHistory++;
 	}
 
 	selscroll(orig, n);

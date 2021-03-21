@@ -20,6 +20,7 @@ The [suckless terminal (st)](https://st.suckless.org/) with some additional feat
 + `shift+right click` can paste in `MODE_MOUSE`
 + `^L` keeps scrollback buffer intact
 + smart copy with `^C`
++ scroll beyond last line (костыль)
 
 note: `st.1` remains unedited
 
