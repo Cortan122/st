@@ -5,10 +5,10 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "mono:pixelsize=16:antialias=true:autohint=true";
+static char *font = "mono:size=12:rgba=rgb:antialias=true:autohint=true";
 static char *font2[] = {
-	"Inconsolata for Powerline:pixelsize=16:antialias=true:autohint=true",
-	"Unifont:pixelsize=16:antialias=flase"
+	"Inconsolata for Powerline:size=12:rgba=rgb:antialias=true:autohint=true",
+	"Unifont:size=12:rgba=rgb:antialias=flase"
 };
 static int borderpx = 2;
 
