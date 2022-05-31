@@ -1809,7 +1809,7 @@ csihandle(void)
 				int d = term.row;
 				while(tlinelen(d-1) == 0)d--;
 				while(d > 0){
-					tscrollup(term.top, 1, 1);
+					tscrollup(term.top, 1);
 					tmoveto(term.c.x, term.c.y);
 					d--;
 				}
