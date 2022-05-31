@@ -1110,6 +1110,13 @@ kscrollup(const Arg *a)
 	if (n < 0) n = (-n) * term.row;
 	if (n > TSCREEN.size - term.row - TSCREEN.off) n = TSCREEN.size - term.row - TSCREEN.off;
 	while (!TLINE(-n)) --n;
+	if (term.c.y < term.row - 1 && n > 0) {
+		if (n > term.row - 1 - term.c.y) n = term.row - 1 - term.c.y;
+		TSCREEN.cur -= n;
+		selscroll(0, n);
+		tmoveto(term.c.x, term.c.y + n);
+		n = 0;
+	}
 	TSCREEN.off += n;
 	selscroll(0, n);
 	tfulldirt();
@@ -1125,7 +1132,12 @@ kscrolldown(const Arg *a)
 		return;
 
 	if (n < 0) n = (-n) * term.row;
-	if (n > TSCREEN.off) n = TSCREEN.off;
+	if (n > TSCREEN.off) {
+		if (n > term.c.y + TSCREEN.off) n = term.c.y + TSCREEN.off;
+		tscrollup(term.top, n - TSCREEN.off);
+		tmoveto(term.c.x, term.c.y - n + TSCREEN.off);
+		n = TSCREEN.off;
+	}
 	TSCREEN.off -= n;
 	selscroll(0, -n);
 	tfulldirt();
