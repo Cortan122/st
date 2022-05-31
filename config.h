@@ -195,6 +195,9 @@ static uint forcemousemod = ShiftMask;
  */
 char *iso14755_cmd = "dmenu -w \"$WINDOWID\" -p codepoint: </dev/null";
 
+#define MODKEY Mod1Mask
+#define TERMMOD (ControlMask|ShiftMask)
+
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
@@ -205,10 +208,10 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_NO_MOD,            Button5, kscrolldown,    {.i =  3},     0,        -1 },
 	{ ShiftMask,            Button4, kscrollup,      {.i = -1},     0,        -1 },
 	{ ShiftMask,            Button5, kscrolldown,    {.i = -1},     0,        -1 },
-	{ ControlMask,          Button4, zoom,           {.f = +1} },
-	{ ControlMask,          Button5, zoom,           {.f = -1} },
 	{ TERMMOD,              Button4, changealpha,    {.f = .1} },
 	{ TERMMOD,              Button5, changealpha,    {.f =-.1} },
+	{ ControlMask,          Button4, zoom,           {.f = +1} },
+	{ ControlMask,          Button5, zoom,           {.f = -1} },
 	{ ControlMask,          Button2, zoomreset,      {.f =  0} },
 	{ XK_NO_MOD,            Button2, clippaste,      {.i =  0} },
 	{ XK_NO_MOD,            Button3, clippaste,      {.i =  0} },
@@ -222,8 +225,6 @@ static MouseShortcut mshortcuts[] = {
 };
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask
-#define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
