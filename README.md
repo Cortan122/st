@@ -24,3 +24,4 @@ st is a simple terminal emulator for X which sucks less.
 + applied [iso14755](https://st.suckless.org/patches/iso14755) patch version [0.8.5.diff](https://st.suckless.org/patches/iso14755/st-iso14755-0.8.5.diff)
 + applied [bold-is-not-bright](https://st.suckless.org/patches/bold-is-not-bright) patch version [is-not-bright-20190127-3be4cf1.diff](https://st.suckless.org/patches/bold-is-not-bright/st-bold-is-not-bright-20190127-3be4cf1.diff)
 + applied [alpha](https://st.suckless.org/patches/alpha) patch version [osc11-20220222-0.8.5.diff](https://st.suckless.org/patches/alpha/st-alpha-osc11-20220222-0.8.5.diff)
++ applied [font2](https://st.suckless.org/patches/font2) patch version [20190416-ba72400.diff](https://st.suckless.org/patches/font2/st-font2-20190416-ba72400.diff)
