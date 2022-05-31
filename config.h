@@ -191,23 +191,20 @@ static unsigned int defaultattr = 11;
 static uint forcemousemod = ShiftMask;
 
 /*
+ * Command used to query unicode glyphs.
+ */
+char *iso14755_cmd = "dmenu -w \"$WINDOWID\" -p codepoint: </dev/null";
+
+/*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release   altscrn */
-	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 3},      0,        -1 },
-	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 3},      0,        -1 },
-	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
-	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\x1bOA\x1bOA\x1bOA"} },
-	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
-	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\x1bOB\x1bOB\x1bOB"} },
-
-	{ XK_NO_MOD,            Button4, kscrollup,      {.i =  3} },
-	{ XK_NO_MOD,            Button5, kscrolldown,    {.i =  3} },
-	{ ShiftMask,            Button4, kscrollup,      {.i = -1} },
-	{ ShiftMask,            Button5, kscrolldown,    {.i = -1} },
+	{ XK_NO_MOD,            Button4, kscrollup,      {.i =  3},     0,        -1 },
+	{ XK_NO_MOD,            Button5, kscrolldown,    {.i =  3},     0,        -1 },
+	{ ShiftMask,            Button4, kscrollup,      {.i = -1},     0,        -1 },
+	{ ShiftMask,            Button5, kscrolldown,    {.i = -1},     0,        -1 },
 	{ ControlMask,          Button4, zoom,           {.f = +1} },
 	{ ControlMask,          Button5, zoom,           {.f = -1} },
 	// { TERMMOD,              Button4, changealpha,    {.f = .1} },
@@ -217,6 +214,11 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_NO_MOD,            Button3, clippaste,      {.i =  0} },
 	{ ShiftMask,            Button2, clippaste,      {.i =  0} },
 	{ ShiftMask,            Button3, clippaste,      {.i =  0} },
+
+	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
+	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\x1bOA\x1bOA\x1bOA"} },
+	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
+	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\x1bOB\x1bOB\x1bOB"} },
 };
 
 /* Internal keyboard shortcuts. */
@@ -236,7 +238,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-	// { TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
 };
 
 /*
