@@ -1139,10 +1139,15 @@ kscrolldown(const Arg *a)
 
 	if (n < 0) n = (-n) * term.row;
 	if (n > TSCREEN.off) {
-		if (n > term.c.y + TSCREEN.off) n = term.c.y + TSCREEN.off;
-		tscrollup(term.top, n - TSCREEN.off);
-		tmoveto(term.c.x, term.c.y - n + TSCREEN.off);
-		n = TSCREEN.off;
+		int temp = TSCREEN.off;
+		TSCREEN.off = 0;
+		selscroll(0, -temp);
+		n -= temp;
+
+		if (n > term.c.y) n = term.c.y;
+		tscrollup(term.top, n);
+		tmoveto(term.c.x, term.c.y - n);
+		n = 0;
 	}
 	TSCREEN.off -= n;
 	selscroll(0, -n);
