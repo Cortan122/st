@@ -224,6 +224,8 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\x1bOB\x1bOB\x1bOB"} },
 };
 
+static char *copyoutput[] = { "/bin/sh", "-c", "xclip -i", "externalpipe", NULL };
+
 /* Internal keyboard shortcuts. */
 
 static Shortcut shortcuts[] = {
@@ -240,6 +242,7 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+  { TERMMOD,              XK_O,           externalpipe,   {.v = copyoutput } },
 };
 
 /*

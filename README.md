@@ -5,7 +5,7 @@ st is a simple terminal emulator for X which sucks less.
 + branch [original](https://github.com/Cortan122/st/tree/original) is source code from the [suckless](https://st.suckless.org/) website
 + branch [2019-fork](https://github.com/Cortan122/st/tree/2019-fork) is my old version based on [Luke Smith's](https://github.com/LukeSmithxyz/st) fork, with all the changes squished to one commit
 + branch [based-fork](https://github.com/Cortan122/st/tree/based-fork) is a newer version, also based on [Luke's](https://github.com/LukeSmithxyz/st) fork, with an explicit list of changes and separate commits
-+ branch [master](https://github.com/Cortan122/st/tree/master) is my current vased on the original source code with the [ringbuffer](https://st.suckless.org/patches/scrollback/st-scrollback-ringbuffer-0.8.5.diff) scrollback patch
++ branch [master](https://github.com/Cortan122/st/tree/master) is my current based on the original source code with the [ringbuffer](https://st.suckless.org/patches/scrollback/st-scrollback-ringbuffer-0.8.5.diff) scrollback patch
 
 ## changes in code
 + `^L` keeps scrollback buffer intact
@@ -14,6 +14,7 @@ st is a simple terminal emulator for X which sucks less.
 + simplified [anysize](https://st.suckless.org/patches/anysize/) patch that doesn't center the screen
 + smart copy with `^C`
 + scroll beyond last line
++ external pipe patch modified to use history
 
 ## changes in config
 + keyboard input [patch](https://st.suckless.org/patches/fix_keyboard_input/)
@@ -34,3 +35,4 @@ st is a simple terminal emulator for X which sucks less.
 + applied [alpha](https://st.suckless.org/patches/alpha) patch version [osc11-20220222-0.8.5.diff](https://st.suckless.org/patches/alpha/st-alpha-osc11-20220222-0.8.5.diff)
 + applied [font2](https://st.suckless.org/patches/font2) patch version [20190416-ba72400.diff](https://st.suckless.org/patches/font2/st-font2-20190416-ba72400.diff)
 + applied [boxdraw](https://st.suckless.org/patches/boxdraw) patch version [0.8.5.diff](https://st.suckless.org/patches/boxdraw/st-boxdraw_v2-0.8.5.diff)
++ applied [externalpipe](https://st.suckless.org/patches/externalpipe) patch version [0.8.4.diff](https://st.suckless.org/patches/externalpipe/st-externalpipe-0.8.4.diff)
