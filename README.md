@@ -15,6 +15,7 @@ st is a simple terminal emulator for X which sucks less.
 + smart copy with `^C`
 + scroll beyond last line
 + external pipe patch modified to use history
+<!-- TODO: resizing in alt screen fucks up cursor pos -->
 
 ## changes in config
 + keyboard input [patch](https://st.suckless.org/patches/fix_keyboard_input/)
