@@ -281,6 +281,8 @@ clippaste(const Arg *dummy)
 {
 	Atom clipboard;
 
+	if (thasselection()) xclipcopy();
+
 	clipboard = XInternAtom(xw.dpy, "CLIPBOARD", 0);
 	XConvertSelection(xw.dpy, clipboard, xsel.xtarget, clipboard,
 			xw.win, CurrentTime);

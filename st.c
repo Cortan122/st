@@ -1095,10 +1095,16 @@ tswapscreen(void)
 	tfulldirt();
 }
 
+int
+thasselection(void)
+{
+	return !(sel.mode == SEL_EMPTY || sel.ob.x == -1 || sel.alt != IS_SET(MODE_ALTSCREEN));
+}
+
 void
 ktryclipcopy(const Arg* dummy)
 {
-	if (sel.mode == SEL_EMPTY || sel.ob.x == -1 || sel.alt != IS_SET(MODE_ALTSCREEN))
+	if (!thasselection())
 		ttywrite("\x03", 1, 1);
 	else
 		xclipcopy();
