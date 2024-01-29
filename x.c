@@ -600,6 +600,12 @@ selnotify(XEvent *e)
 			continue;
 		}
 
+		/* hack to check if we are about to paste a png, and not do that */
+		if (ofs == 0 && strncmp(data, "\x89PNG\r\n\x1a\n", 8) == 0) {
+			fprintf(stderr, "Trying to paste a png: rem=%lu\n", rem);
+			goto skip_paste;
+		}
+
 		/*
 		 * As seen in getsel:
 		 * Line endings are inconsistent in the terminal and GUI world
@@ -618,6 +624,8 @@ selnotify(XEvent *e)
 		ttywrite((char *)data, nitems * format / 8, 1);
 		if (IS_SET(MODE_BRCKTPASTE) && rem == 0)
 			ttywrite("\033[201~", 6, 0);
+
+		skip_paste:
 		XFree(data);
 		/* number of 32-bit chunks returned */
 		ofs += nitems * format / 32;
