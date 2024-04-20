@@ -562,6 +562,7 @@ selnotify(XEvent *e)
 	if (property == None)
 		return;
 
+	int is_pasting_png = 0;
 	do {
 		if (XGetWindowProperty(xw.dpy, xw.win, property, ofs,
 					BUFSIZ/4, False, AnyPropertyType,
@@ -601,10 +602,11 @@ selnotify(XEvent *e)
 		}
 
 		/* hack to check if we are about to paste a png, and not do that */
-		if (ofs == 0 && strncmp(data, "\x89PNG\r\n\x1a\n", 8) == 0) {
+		if (ofs == 0 && strncmp((char*)data, "\x89PNG\r\n\x1a\n", 8) == 0) {
 			fprintf(stderr, "Trying to paste a png: rem=%lu\n", rem);
+			is_pasting_png = 1;
 			goto skip_paste;
-		}
+		} else if (is_pasting_png) goto skip_paste;
 
 		/*
 		 * As seen in getsel:
@@ -636,6 +638,8 @@ selnotify(XEvent *e)
 	 * next data chunk in the property.
 	 */
 	XDeleteProperty(xw.dpy, xw.win, (int)property);
+
+	if (is_pasting_png) xbell();
 }
 
 void
