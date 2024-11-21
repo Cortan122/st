@@ -207,6 +207,7 @@ st| simpleterm,
 
 st-256color| simpleterm with 256 colors,
 	use=st,
+	RGB,
 	ccc,
 	colors#256,
 	oc=\E]104\007,

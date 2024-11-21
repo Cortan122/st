@@ -1,5 +1,5 @@
 # st version
-VERSION = 0.9
+VERSION = 0.9-$(shell git rev-parse --short=7 HEAD)
 
 # Customize below to fit your system
 
