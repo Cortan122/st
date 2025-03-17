@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <wchar.h>
 
+// #define DEBUG_ESCAPE_SEQUENCES
 #include "st.h"
 #include "win.h"
 
@@ -852,6 +853,17 @@ ttyread(void)
 	case -1:
 		die("couldn't read from shell: %s\n", strerror(errno));
 	default:
+		#ifdef DEBUG_ESCAPE_SEQUENCES
+			printf("read: [%d]'", ret);
+			for (int i = 0; i < ret; i++) {
+				if (buf[buflen+i] == '\x1b') {
+					printf("\\x1b");
+				} else {
+					printf("%c", buf[buflen+i]);
+				}
+			}
+			printf("'\n");
+		#endif
 		buflen += ret;
 		written = twrite(buf, buflen, 0);
 		buflen -= written;
@@ -866,6 +878,18 @@ void
 ttywrite(const char *s, size_t n, int may_echo)
 {
 	const char *next;
+
+	#ifdef DEBUG_ESCAPE_SEQUENCES
+		printf("write: [%d]'", strlen(s));
+		for (int i = 0; s[i]; i++) {
+			if (s[i] == '\x1b') {
+				printf("\\x1b");
+			} else {
+				printf("%c", s[i]);
+			}
+		}
+		printf("'\n");
+	#endif
 
 	if (may_echo && IS_SET(MODE_ECHO))
 		twrite(s, n, 1);
