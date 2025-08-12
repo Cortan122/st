@@ -1,12 +1,6 @@
 # st - simple terminal
 st is a simple terminal emulator for X which sucks less.
 
-## branches in this repo
-+ branch [original](https://github.com/Cortan122/st/tree/original) is source code from the [suckless](https://st.suckless.org/) website
-+ branch [2019-fork](https://github.com/Cortan122/st/tree/2019-fork) is my old version based on [Luke Smith's](https://github.com/LukeSmithxyz/st) fork, with all the changes squished to one commit
-+ branch [based-fork](https://github.com/Cortan122/st/tree/based-fork) is a newer version, also based on [Luke's](https://github.com/LukeSmithxyz/st) fork, with an explicit list of changes and separate commits
-+ branch [master](https://github.com/Cortan122/st/tree/master) is my current based on the original source code with the [ringbuffer](https://st.suckless.org/patches/scrollback/st-scrollback-ringbuffer-0.8.5.diff) scrollback patch
-
 ## changes in code
 + `^L` keeps scrollback buffer intact
 + selected text no longer turns invisible when alpha is 0
